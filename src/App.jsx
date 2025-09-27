@@ -10,6 +10,7 @@ const CARDS = [
 
 const App = () => {
   const [count, setCount] = useState(0)
+  const [name, setName] = useState ("")
 
   const inc = () => setCount(c => c + 1)
 
@@ -39,7 +40,14 @@ const App = () => {
         Contador: {count}
       </button>
 
-      <Hello name="Bella" />
+      <Hello name="Bella" /> 
+      <form>
+        <input
+        type="text"
+        value= {name}
+        onChange={event => setName(event.target.value)}
+        />
+      </form>
     </main>
   );
 }
