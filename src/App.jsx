@@ -1,13 +1,18 @@
+import { useState } from "react";
 import { Card } from "./components/Card";
 import { Hello } from "./components/Hello"
 
 const CARDS = [
   { id: 0, title: 'Card A', description: 'filho de A' },
-  { id: 0, title: 'Card B', description: 'filho de B' },
-  { id: 0, title: 'Card C', description: 'filho de C' },
+  { id: 1, title: 'Card B', description: 'filho de B' },
+  { id: 2, title: 'Card C', description: 'filho de C' },
 ]
 
 const App = () => {
+  const [count, setCount] = useState(0)
+
+  const inc = () => setCount(c => c + 1)
+
   return (
     <main className="min-h-dvh bg-amber-50">
       <h1 className="text-3xl font-bold text-slate-800">
@@ -23,9 +28,17 @@ const App = () => {
       </div>
 
 
-      <a href="a" className="inline-block px-4 py-2 rounded-lg border houver:bg-slate-100 focus:ring-2 focust:ring-blue-500">
+      <a href="#" className="inline-block px-4 py-2 rounded-lg border houver:bg-slate-100 focus:ring-2 focus:ring-blue-500">
         Link com foco
       </a>
+
+      <button
+        className="inline-block px-4 py-2 rounded-lg border houver:bg-slate-300 focus:ring-2 focus:ring-blue-500 cursor-pointer"
+        onClick={inc}
+      >
+        Contador: {count}
+      </button>
+
       <Hello name="Bella" />
     </main>
   );
