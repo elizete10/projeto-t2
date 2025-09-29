@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Card } from "./components/Card";
 import { Hello } from "./components/Hello"
+import { Textfield } from "./components/TextField";
 
 const CARDS = [
   { id: 0, title: 'Card A', description: 'filho de A' },
@@ -14,8 +15,17 @@ const App = () => {
 
   const inc = () => setCount(c => c + 1)
 
+  const handleSubmit = event => {
+    event.preventDefaut ()
+
+    console.log({ name })
+    // Enviar para API/banco de dados
+
+    setName ('')
+  }
+
   return (
-    <main className="min-h-dvh bg-amber-50">
+    <main className="min-h-dvh grid place-items-center bg-amber-50">
       <h1 className="text-3xl font-bold text-slate-800">
         Hello Tailwind + React!
       </h1>
@@ -41,12 +51,22 @@ const App = () => {
       </button>
 
       <Hello name="Bella" /> 
-      <form>
-        <input
+      <form onSubmit={handleSubmit}>
+        <Textfield
+        Label= "Digite seu nome completo"
+        placeholder
         type="text"
         value= {name}
         onChange={event => setName(event.target.value)}
         />
+
+        
+      <button
+      type="submit"
+        className="inline-block px-4 py-2 w-full rounded-lg border houver:bg-slate-300 focus:ring-2 focus:ring-blue-500 cursor-pointer"
+      >
+        Enviar
+      </button>
       </form>
     </main>
   );
