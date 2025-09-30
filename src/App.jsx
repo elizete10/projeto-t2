@@ -11,17 +11,21 @@ const CARDS = [
 
 const App = () => {
   const [count, setCount] = useState(0)
-  const [name, setName] = useState ("")
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
 
   const inc = () => setCount(c => c + 1)
 
   const handleSubmit = event => {
-    event.preventDefaut ()
+    event.preventDefault()
 
-    console.log({ name })
+    console.log({ name, email, password })
     // Enviar para API/banco de dados
 
-    setName ('')
+    setName('')
+    setEmail('')
+    setPassword('')
   }
 
   return (
@@ -50,23 +54,41 @@ const App = () => {
         Contador: {count}
       </button>
 
-      <Hello name="Bella" /> 
+      <Hello name="Bella" />
       <form onSubmit={handleSubmit}>
+
         <Textfield
-        Label= "Digite seu nome completo"
-        placeholder
-        type="text"
-        value= {name}
-        onChange={event => setName(event.target.value)}
+          Label="Digite seu nome completo"
+          placeholder="name"
+          type="name"
+          value={name}
+          onChange={event => setName(event.target.value)}
         />
 
-        
-      <button
-      type="submit"
-        className="inline-block px-4 py-2 w-full rounded-lg border houver:bg-slate-300 focus:ring-2 focus:ring-blue-500 cursor-pointer"
-      >
-        Enviar
-      </button>
+        <Textfield
+          Label="Digite seu E-mail"
+          placeholder="E-mail"
+          type="email"
+          value={email}
+          id="email"
+          onChange={event => setEmail(event.target.value)}
+        />
+
+        <Textfield
+          Label="Digite sua senha"
+          placeholder="passWord"
+          type="passWord"
+          value={password}
+          onChange={event => setPassword(event.target.value)}
+        />
+
+
+        <button
+          type="submit"
+          className="inline-block px-4 py-2 w-full rounded-lg border houver:bg-slate-300 focus:ring-2 focus:ring-blue-500 cursor-pointer"
+        >
+          Enviar
+        </button>
       </form>
     </main>
   );
